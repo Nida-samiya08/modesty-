@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modesty — Thoughtful fashion, delivered</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%2316382b'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23e2a33c' font-family='serif'>M</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c2a22; --pine:#16382b; --pine-2:#0e271d; --pine-3:#1e4d3b;
+  --sand:#f5efe1; --paper:#fffdf6; --line:#e3dac4; --line-2:#d3c7a9;
+  --saffron:#e2a33c; --saffron-d:#c8891f; --clay:#b4552d; --sage:#7d9b8b;
+  --gold:#e2a33c; --plum:#5d4157;
+  --shadow:0 10px 30px rgba(28,42,34,.12);
+  --r:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Karla',sans-serif;background:var(--sand);color:var(--ink);line-height:1.5;overflow-x:hidden}
+.display{font-family:'Fraunces',serif}
+img,svg{display:block}
+button{font-family:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px;border-radius:4px}
+
+/* ============ TOP STRIP (marquee) ============ */
+.topstrip{background:var(--pine-2);color:#e9e2cf;font-size:.78rem;letter-spacing:.06em;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.07)}
+.topstrip .track{display:flex;width:max-content;animation:marquee 32s linear infinite;padding:.42rem 0}
+.topstrip:hover .track{animation-play-state:paused}
+.topstrip span{padding:0 2.4rem;white-space:nowrap}
+.topstrip b{color:var(--saffron)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ============ HEADER ============ */
+header{position:sticky;top:0;z-index:120;background:var(--pine);color:#efe9d6;box-shadow:0 4px 18px rgba(14,39,29,.35)}
+.header-main{display:flex;align-items:center;gap:18px;padding:12px 22px;max-width:1440px;margin:0 auto}
+.logo{display:flex;align-items:baseline;gap:6px;flex-shrink:0;padding:4px 6px;border-radius:6px;transition:background .2s}
+.logo:hover{background:rgba(255,255,255,.08)}
+.logo .mark{font-family:'Fraunces';font-size:1.75rem;font-weight:700;letter-spacing:.01em}
+.logo .mark em{font-style:normal;color:var(--saffron)}
+.logo small{font-size:.65rem;opacity:.65;letter-spacing:.14em;text-transform:uppercase}
+.search{flex:1;display:flex;max-width:760px;border-radius:8px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 2px transparent;transition:box-shadow .2s}
+.search:focus-within{box-shadow:inset 0 0 0 2px var(--saffron)}
+.search select{border:none;background:#efe7d2;color:var(--ink);font:600 .8rem 'Karla';padding:0 8px;max-width:118px;cursor:pointer}
+.search input{flex:1;border:none;padding:11px 12px;font:500 .92rem 'Karla';color:var(--ink);min-width:60px}
+.search input:focus{outline:none}
+.search .go{border:none;background:var(--saffron);padding:0 16px;display:grid;place-items:center;transition:background .2s}
+.search .go:hover{background:var(--saffron-d)}
+.h-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.h-link{padding:6px 10px;border-radius:6px;line-height:1.15;text-align:left;transition:background .2s;background:none;border:none;color:inherit;font-family:inherit}
+.h-link:hover{background:rgba(255,255,255,.08)}
+.h-link small{display:block;font-size:.68rem;opacity:.7}
+.h-link b{font-size:.86rem}
+.icon-btn{position:relative;display:grid;place-items:center;width:44px;height:44px;border-radius:8px;background:none;border:none;color:inherit;transition:background .2s}
+.icon-btn:hover{background:rgba(255,255,255,.08)}
+.pip{position:absolute;top:2px;right:0;min-width:19px;height:19px;padding:0 4px;border-radius:10px;background:var(--saffron);color:var(--pine-2);font:800 .68rem 'Karla';display:grid;place-items:center;transform:scale(0);transition:transform .25s cubic-bezier(.34,1.8,.5,1)}
+.pip.on{transform:scale(1)}
+.pip.bounce{animation:pip .45s cubic-bezier(.34,1.9,.5,1)}
+@keyframes pip{40%{transform:scale(1.45)}100%{transform:scale(1)}}
+.cart-btn{display:flex;align-items:flex-end;gap:6px}
+.cart-btn b{font-size:.86rem}
+
+.header-sub{background:var(--pine-3);border-top:1px solid rgba(255,255,255,.08)}
+.header-sub .row{max-width:1440px;margin:0 auto;display:flex;align-items:center;gap:2px;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.header-sub .row::-webkit-scrollbar{display:none}
+.sublink{background:none;border:none;color:#e9e2cf;font:600 .84rem 'Karla';padding:9px 12px;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
+.sublink:hover{background:rgba(255,255,255,.07);border-bottom-color:var(--saffron)}
+.sublink.hot{color:var(--saffron)}
+
+/* ============ HERO CAROUSEL ============ */
+.hero{position:relative;background:var(--pine-2)}
+.slide{position:absolute;inset:0;display:flex;align-items:center;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s;
+  background-image:radial-gradient(rgba(226,163,60,.10) 1px,transparent 1.6px);background-size:22px 22px}
+.slide.active{position:relative;opacity:1;visibility:visible}
+.slide-inner{max-width:1440px;margin:0 auto;width:100%;padding:56px 40px 96px;display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:8px;font:800 .72rem 'Karla';letter-spacing:.22em;text-transform:uppercase;color:var(--saffron);margin-bottom:14px}
+.kicker::before{content:"";width:26px;height:2px;background:var(--saffron)}
+.slide h1{font-family:'Fraunces';font-weight:600;font-size:clamp(2rem,4.6vw,3.6rem);line-height:1.04;color:#f6f1e2;margin-bottom:14px}
+.slide h1 em{font-style:italic;color:var(--saffron)}
+.slide p{color:#c9cfba;max-width:46ch;font-size:1.02rem;margin-bottom:26px}
+.slide-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--saffron);color:var(--pine-2);font:800 .92rem 'Karla';padding:13px 26px;border:none;border-radius:8px;box-shadow:0 6px 18px rgba(226,163,60,.28);transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:#f0b452;box-shadow:0 12px 26px rgba(226,163,60,.36)}
+.btn:active{transform:translateY(0)}
+.btn-ghost{background:none;box-shadow:none;color:#f6f1e2;border:1.5px solid rgba(246,241,226,.4);font-weight:700}
+.btn-ghost:hover{background:rgba(246,241,226,.1);box-shadow:none}
+.slide-art{justify-self:center;width:min(340px,80%);filter:drop-shadow(0 24px 40px rgba(0,0,0,.35));animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+.car-btn{position:absolute;top:calc(50% - 30px);transform:translateY(-50%);z-index:5;width:44px;height:58px;border:none;background:rgba(246,241,226,.12);color:#f6f1e2;display:grid;place-items:center;transition:background .2s;border-radius:6px}
+.car-btn:hover{background:rgba(246,241,226,.28)}
+.car-btn.prev{left:10px}.car-btn.next{right:10px}
+.dots{position:absolute;bottom:82px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
+.dots button{width:26px;height:4px;border-radius:2px;border:none;background:rgba(246,241,226,.3);transition:all .3s}
+.dots button.on{background:var(--saffron);width:44px}
+
+/* ============ SHELF (overlap) ============ */
+.shelf{max-width:1440px;margin:-72px auto 0;padding:0 22px;position:relative;z-index:6}
+.shelf-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.shelf-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s;cursor:pointer}
+.shelf-card:hover{transform:translateY(-5px);box-shadow:0 18px 34px rgba(28,42,34,.18)}
+.shelf-card .thumb{width:58px;height:58px;border-radius:8px;overflow:hidden;flex-shrink:0}
+.shelf-card b{font-size:.92rem;line-height:1.25;display:block}
+.shelf-card small{color:#7a745f;font-size:.75rem}
+
+/* ============ SECTIONS ============ */
+section{max-width:1440px;margin:0 auto;padding:52px 22px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:22px;flex-wrap:wrap}
+.sec-head h2{font-family:'Fraunces';font-weight:600;font-size:clamp(1.5rem,2.6vw,2.1rem)}
+.sec-head .sub{color:#7a745f;font-size:.9rem;margin-top:2px}
+.count-timer{display:flex;align-items:center;gap:12px}
+.timer{display:flex;gap:6px;align-items:center;font:800 1rem 'Karla';color:var(--clay)}
+.timer span{background:var(--pine);color:var(--sand);padding:6px 9px;border-radius:6px;min-width:40px;text-align:center;font-variant-numeric:tabular-nums}
+.timer i{font-style:normal;color:var(--pine)}
+
+/* deals rail */
+.rail-wrap{position:relative}
+.rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;scrollbar-width:thin}
+.rail::-webkit-scrollbar{height:6px}.rail::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
+.rail-btn{position:absolute;top:38%;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow);display:grid;place-items:center;z-index:4;transition:all .2s}
+.rail-btn:hover{background:var(--pine);color:var(--sand)}
+.rail-btn.prev{left:-14px}.rail-btn.next{right:-14px}
+.deal-card{scroll-snap-align:start;flex:0 0 232px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative}
+.deal-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.deal-art{aspect-ratio:1/1;background:#efe8d6}
+.deal-off{position:absolute;top:10px;left:10px;background:var(--clay);color:#fff;font:800 .78rem 'Karla';padding:5px 9px;border-radius:6px;box-shadow:0 4px 10px rgba(180,85,45,.4)}
+.deal-body{padding:13px 14px 15px}
+.deal-body h4{font-size:.88rem;line-height:1.3;height:2.6em;overflow:hidden}
+.claim{margin:10px 0 8px;height:6px;background:#efe4cd;border-radius:3px;overflow:hidden}
+.claim i{display:block;height:100%;background:linear-gradient(90deg,var(--clay),var(--saffron));border-radius:3px}
+.claim-txt{font-size:.72rem;color:var(--clay);font-weight:700}
+
+/* category tiles */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.cat-tile{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--paper);height:210px;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.cat-tile:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.cat-tile .art{position:absolute;inset:0;display:grid;place-items:center;transition:transform .4s}
+.cat-tile:hover .art{transform:scale(1.07)}
+.cat-tile .lbl{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 14px;background:linear-gradient(transparent,rgba(14,39,29,.82));color:#f6f1e2}
+.cat-tile .lbl b{font-family:'Fraunces';font-size:1.12rem;font-weight:600;display:block}
+.cat-tile .lbl small{font-size:.74rem;color:var(--saffron);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+
+/* ============ SHOP GRID ============ */
+.toolbar{position:sticky;top:106px;z-index:50;background:var(--sand);padding:10px 0;display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line-2);background:var(--paper);border-radius:999px;padding:7px 16px;font:700 .82rem 'Karla';color:#57513d;transition:all .2s}
+.chip:hover{border-color:var(--pine);color:var(--pine);transform:translateY(-1px)}
+.chip.on{background:var(--pine);border-color:var(--pine);color:var(--sand)}
+.sortwrap{display:flex;align-items:center;gap:10px;font-size:.84rem;color:#7a745f}
+.sortwrap select{font:700 .84rem 'Karla';color:var(--ink);border:1.5px solid var(--line-2);border-radius:8px;padding:8px 10px;background:var(--paper);cursor:pointer}
+.results-count{font-size:.86rem;color:#7a745f;margin:14px 2px 16px}
+.results-count b{color:var(--pine)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(242px,1fr));gap:18px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;position:relative;transition:transform .25s,box-shadow .25s;animation:pop .45s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1}}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 38px rgba(28,42,34,.16)}
+.card-art{aspect-ratio:1/1;overflow:hidden;cursor:pointer;position:relative}
+.card-art svg{width:100%;height:100%;transition:transform .5s ease}
+.card:hover .card-art svg{transform:scale(1.06)}
+.badge{position:absolute;top:10px;left:10px;font:800 .68rem 'Karla';letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:5px;color:#fff;z-index:2}
+.badge.best{background:var(--clay)}.badge.choice{background:var(--pine)}.badge.new{background:var(--sage)}.badge.deal{background:var(--saffron);color:var(--pine-2)}.badge.ltd{background:var(--plum)}
+.heart{position:absolute;top:8px;right:8px;z-index:2;width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,253,246,.9);display:grid;place-items:center;color:#a49c85;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.heart:hover{transform:scale(1.14);color:var(--clay)}
+.heart.on{color:var(--clay);animation:pip .4s}
+.card-body{padding:14px 15px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-body .cat{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#a09878;font-weight:800}
+.card-body h3{font-size:.95rem;line-height:1.32;font-weight:700;cursor:pointer;transition:color .2s}
+.card-body h3:hover{color:var(--clay)}
+.stars{position:relative;display:inline-block;font-size:.86rem;letter-spacing:2px;color:#d9d2bd;line-height:1;vertical-align:middle}
+.stars .fill{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;color:var(--gold)}
+.rate-line{display:flex;align-items:center;gap:7px}
+.rate-line small{color:#8d866e;font-size:.76rem}
+.price-line{margin-top:auto;padding-top:6px;display:flex;align-items:baseline;gap:8px}
+.price{font-family:'Fraunces';font-weight:700;font-size:1.35rem;color:var(--pine)}
+.price sup{font-size:.6em;font-weight:600;top:-.5em}
+.old{color:#a49c85;text-decoration:line-through;font-size:.84rem}
+.save{font-size:.74rem;font-weight:800;color:var(--clay)}
+.add-btn{margin-top:10px;border:1.5px solid var(--pine);background:transparent;color:var(--pine);font:800 .84rem 'Karla';padding:10px;border-radius:8px;transition:all .22s;display:flex;align-items:center;justify-content:center;gap:8px}
+.add-btn:hover{background:var(--pine);color:var(--sand);transform:translateY(-1px)}
+.add-btn.added{background:var(--pine-3);border-color:var(--pine-3);color:#fff}
+/* skeleton */
+.skel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.skel .a{aspect-ratio:1/1;background:linear-gradient(100deg,#ece4d0 40%,#f7f2e5 50%,#ece4d0 60%);background-size:200% 100%;animation:shim 1.2s infinite}
+.skel .l{height:12px;border-radius:6px;margin:12px 14px 0;background:linear-gradient(100deg,#ece4d0 40%,#f7f2e5 50%,#ece4d0 60%);background-size:200% 100%;animation:shim 1.2s infinite}
+.skel .l.short{width:55%;margin-bottom:18px}
+@keyframes shim{to{background-position:-200% 0}}
+.empty{text-align:center;padding:60px 20px;grid-column:1/-1}
+.empty .display{font-size:1.6rem;margin:14px 0 6px}
+.empty p{color:#8d866e;margin-bottom:20px}
+
+/* ============ JOURNAL ============ */
+.journal{margin-top:64px}
+.journal-inner{background:var(--pine);border-radius:16px;color:#f0ebd9;display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden;position:relative}
+.journal-inner::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(226,163,60,.09) 1px,transparent 1.6px);background-size:20px 20px;pointer-events:none}
+.journal-txt{padding:52px 48px;position:relative}
+.journal-txt .kicker{color:var(--saffron)}
+.journal-txt h2{font-family:'Fraunces';font-style:italic;font-weight:500;font-size:clamp(1.5rem,2.8vw,2.3rem);line-height:1.2;margin-bottom:16px}
+.journal-txt p{color:#c4cb b4;color:#c3cab3;max-width:52ch;margin-bottom:26px}
+.journal-art{display:grid;place-items:center;padding:36px;position:relative}
+.journal-art .arch{width:min(260px,90%);border-radius:130px 130px 14px 14px;overflow:hidden;box-shadow:0 26px 50px rgba(0,0,0,.4);transition:transform .4s}
+.journal-art .arch:nth-child(2){position:absolute;right:26px;bottom:20px;width:min(170px,50%);transform:rotate(5deg);opacity:.92}
+.journal-art:hover .arch:first-child{transform:rotate(-2deg) scale(1.02)}
+
+/* ============ NEWSLETTER ============ */
+.news{margin-top:64px}
+.news-inner{border:2px solid var(--pine);border-radius:16px;padding:42px 44px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;background:var(--paper);position:relative;overflow:hidden}
+.news-inner::after{content:"✳";position:absolute;right:-24px;top:-46px;font-size:11rem;color:var(--saffron);opacity:.14;font-family:'Fraunces')}
+.news h3{font-family:'Fraunces';font-weight:600;font-size:1.7rem}
+.news p{color:#7a745f;font-size:.92rem}
+.news form{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:2}
+.news input{border:1.5px solid var(--line-2);border-radius:8px;padding:13px 16px;font:500 .92rem 'Karla';min-width:260px;background:#fff}
+.news input:focus{outline:none;border-color:var(--saffron)}
+
+/* ============ FOOTER ============ */
+.backtop{margin-top:64px;background:var(--pine-3);color:var(--sand);text-align:center;padding:15px;font:700 .88rem 'Karla';cursor:pointer;transition:background .2s;letter-spacing:.04em}
+.backtop:hover{background:var(--pine-2)}
+footer{background:var(--pine-2);color:#b9c0ab;padding:52px 22px 0}
+.f-cols{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:36px;padding-bottom:40px}
+.f-cols .brand .mark{font-family:'Fraunces';font-size:1.7rem;color:#f6f1e2;font-weight:700}
+.f-cols .brand .mark em{font-style:normal;color:var(--saffron)}
+.f-cols .brand p{font-size:.84rem;margin-top:10px;max-width:32ch}
+.f-cols h5{color:#f6f1e2;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.f-cols a{display:block;font-size:.87rem;padding:4px 0;transition:color .2s,transform .2s}
+.f-cols a:hover{color:var(--saffron);transform:translateX(3px)}
+.f-bottom{border-top:1px solid rgba(255,255,255,.09);padding:18px 0;text-align:center;font-size:.78rem;color:#8a927c}
+
+/* ============ CART DRAWER ============ */
+.overlay{position:fixed;inset:0;background:rgba(14,39,29,.55);backdrop-filter:blur(2px);opacity:0;visibility:hidden;transition:all .3s;z-index:200}
+.overlay.open{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--sand);z-index:210;transform:translateX(105%);transition:transform .38s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(14,39,29,.3)}
+.drawer.open{transform:none}
+.drawer-head{background:var(--pine);color:var(--sand);padding:18px 22px;display:flex;justify-content:space-between;align-items:center}
+.drawer-head h3{font-family:'Fraunces';font-weight:600;font-size:1.25rem}
+.x-btn{background:none;border:none;color:inherit;width:36px;height:36px;border-radius:8px;display:grid;place-items:center;transition:background .2s}
+.x-btn:hover{background:rgba(255,255,255,.14)}
+.ship-bar{padding:14px 22px;background:#efe8d4;border-bottom:1px solid var(--line);font-size:.82rem}
+.ship-bar .track{height:7px;background:#e0d5b8;border-radius:4px;margin-top:8px;overflow:hidden}
+.ship-bar .fill{height:100%;background:linear-gradient(90deg,var(--sage),var(--pine-3));border-radius:4px;transition:width .5s ease}
+.drawer-items{flex:1;overflow-y:auto;padding:16px 22px}
+.ci{display:grid;grid-template-columns:70px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line-2);animation:pop .3s ease}
+.ci .thumb{width:70px;height:70px;border-radius:8px;overflow:hidden;background:#efe8d6}
+.ci h5{font-size:.84rem;line-height:1.3}
+.ci .p{font-family:'Fraunces';font-weight:700;color:var(--pine);margin-top:2px}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--line-2);border-radius:999px;margin-top:8px;overflow:hidden}
+.qty button{width:26px;height:26px;border:none;background:none;font-weight:800;color:var(--pine);transition:background .2s}
+.qty button:hover{background:var(--line)}
+.qty b{font-size:.82rem;min-width:26px;text-align:center}
+.ci .rm{background:none;border:none;color:#a49c85;font-size:.74rem;font-weight:700;align-self:start;padding:4px;transition:color .2s}
+.ci .rm:hover{color:var(--clay)}
+.cart-empty{text-align:center;padding:50px 10px;color:#8d866e}
+.cart-empty .display{font-size:1.4rem;color:var(--ink);margin:12px 0 4px}
+.drawer-foot{padding:18px 22px;background:var(--paper);border-top:1px solid var(--line)}
+.sub-row{display:flex;justify-content:space-between;font-size:1rem;margin-bottom:14px}
+.sub-row b{font-family:'Fraunces';font-size:1.35rem;color:var(--pine)}
+.checkout{width:100%;justify-content:center}
+
+/* ============ QUICK VIEW MODAL ============ */
+.modal{position:fixed;inset:0;z-index:220;display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;transition:all .3s}
+.modal.open{opacity:1;visibility:visible}
+.modal-box{background:var(--sand);border-radius:14px;width:min(860px,100%);max-height:90vh;overflow:auto;display:grid;grid-template-columns:1fr 1.1fr;transform:translateY(24px) scale(.97);transition:transform .35s cubic-bezier(.22,1,.36,1);position:relative}
+.modal.open .modal-box{transform:none}
+.modal-art{background:#efe8d6;min-height:340px}
+.modal-info{padding:30px 30px 26px}
+.modal-info .cat{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#a09878;font-weight:800}
+.modal-info h3{font-family:'Fraunces';font-weight:600;font-size:1.6rem;line-height:1.15;margin:6px 0 10px}
+.modal-info .desc{font-size:.9rem;color:#6d674f;margin:12px 0 16px}
+.sizes{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+.size{border:1.5px solid var(--line-2);background:#fff;min-width:44px;padding:8px 12px;border-radius:8px;font:700 .84rem 'Karla';transition:all .18s}
+.size:hover{border-color:var(--pine)}
+.size.on{background:var(--pine);color:var(--sand);border-color:var(--pine)}
+.modal-price{display:flex;align-items:baseline;gap:10px;margin:6px 0 18px}
+.modal-price .price{font-size:2rem}
+.modal-cta{display:flex;gap:10px}
+.modal-cta .btn{flex:1;justify-content:center}
+.modal .x-btn{position:absolute;top:10px;right:10px;color:var(--ink);background:rgba(255,255,255,.7);z-index:3}
+.lbl{font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8d866e}
+
+/* ============ TOASTS & FLY ============ */
+#toasts{position:fixed;bottom:22px;left:22px;z-index:300;display:flex;flex-direction:column;gap:10px}
+.toast{background:var(--pine);color:var(--sand);padding:13px 18px;border-radius:10px;font-size:.88rem;font-weight:600;box-shadow:0 14px 30px rgba(14,39,29,.35);display:flex;align-items:center;gap:10px;animation:tin .35s cubic-bezier(.22,1.4,.36,1);border-left:4px solid var(--saffron);max-width:320px}
+.toast.out{animation:tout .3s forwards}
+@keyframes tin{from{opacity:0;transform:translateX(-30px)}}
+@keyframes tout{to{opacity:0;transform:translateY(10px)}}
+.fly{position:fixed;z-index:400;width:18px;height:18px;border-radius:50%;background:var(--saffron);box-shadow:0 0 0 4px rgba(226,163,60,.3);pointer-events:none;transition:transform .7s cubic-bezier(.4,-0.1,.6,1),opacity .7s}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1000px){
+  .slide-inner{grid-template-columns:1fr;padding:44px 26px 96px}
+  .slide-art{display:none}
+  .journal-inner{grid-template-columns:1fr}
+  .journal-art{display:none}
+  .modal-box{grid-template-columns:1fr}
+  .modal-art{min-height:240px}
+  .f-cols{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  .h-link .txt{display:none}
+  .header-main{gap:10px;padding:10px 14px}
+  .search select{display:none}
+  .toolbar{position:static}
+  .shelf{margin-top:-56px}
+  .news-inner{padding:30px 24px}
+  .f-cols{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== ANNOUNCEMENT STRIP ====== -->
+<div class="topstrip"><div class="track" id="marquee">
+  <span>✦ Free shipping on orders over <b>$50</b></span><span>✦ New in: the <b>Eid Edit '26</b></span><span>✦ Easy 30-day returns, always</span><span>✦ <b>20% off</b> first order with code <b>MARHABA</b></span>
+</div></div>
+
+<!-- ====== HEADER ====== -->
+<header>
+  <div class="header-main">
+    <a href="#" class="logo" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">
+      <span class="mark">Modesty<em>.</em></span><small>com</small>
+    </a>
+    <div class="search">
+      <select id="catSelect" aria-label="Search category">
+        <option value="all">All</option>
+        <option>Abayas</option><option>Hijabs &amp; Scarves</option><option>Dresses</option>
+        <option>Tunics</option><option>Prayer &amp; Home</option><option>Accessories</option>
+      </select>
+      <input id="searchInput" type="text" placeholder="Search Modesty — abayas, hijabs, prayer mats…" aria-label="Search products">
+      <button class="go" id="searchGo" aria-label="Search"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0e271d" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    </div>
+    <div class="h-actions">
+      <button class="h-link"><small>Hello, sign in</small><b>Account &amp; Lists</b></button>
+      <button class="h-link txt"><small>Returns</small><b>&amp; Orders</b></button>
+      <button class="icon-btn" id="wishBtn" aria-label="Wishlist">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.7-9.7-9.2C.7 8.4 2.6 4.5 6.2 4.5c2 0 3.6 1.1 4.4 2.7l1.4.1c.8-1.7 2.4-2.8 4.4-2.8 3.6 0 5.5 3.9 3.9 7.3C19.5 16.3 12 21 12 21Z"/></svg>
+        <span class="pip" id="wishCount">0</span>
+      </button>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Cart">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.6"/><circle cx="17.5" cy="20" r="1.6"/><path d="M2.5 3.5h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.2L21.5 7H6.3"/></svg>
+        <span class="pip" id="cartCount">0</span><b class="txt">Cart</b>
+      </button>
+    </div>
+  </div>
+  <nav class="header-sub"><div class="row" id="subNav">
+    <button class="sublink" data-all>☰ &nbsp;All</button>
+    <button class="sublink hot" data-scroll="#deals">Today's Deals</button>
+    <button class="sublink" data-cat="Abayas">Abayas</button>
+    <button class="sublink" data-cat="Hijabs &amp; Scarves">Hijabs &amp; Scarves</button>
+    <button class="sublink" data-cat="Dresses">Dresses</button>
+    <button class="sublink" data-cat="Tunics">Tunics</button>
+    <button class="sublink" data-cat="Prayer &amp; Home">Prayer &amp; Home</button>
+    <button class="sublink" data-cat="Accessories">Accessories</button>
+    <button class="sublink" data-scroll="#journal">The Journal</button>
+    <button class="sublink" data-toast="Gift cards are coming soon 🎁">Gift Cards</button>
+  </div></nav>
+</header>
+
+<main>
+  <!-- ====== HERO CAROUSEL ====== -->
+  <section class="hero" id="hero" style="padding:0;max-width:none">
+    <div id="slides"></div>
+    <button class="car-btn prev" id="carPrev" aria-label="Previous slide"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="car-btn next" id="carNext" aria-label="Next slide"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div class="dots" id="carDots"></div>
+  </section>
+
+  <!-- ====== KEEP SHOPPING SHELF ====== -->
+  <div class="shelf reveal"><div class="shelf-row" id="shelfRow"></div></div>
+
+  <!-- ====== TODAY'S DEALS ====== -->
+  <section id="deals">
+    <div class="sec-head reveal">
+      <div><h2>Today's Deals</h2><div class="sub">Lightning prices on loved layers — gone at midnight.</div></div>
+      <div class="count-timer"><span style="font-size:.8rem;font-weight:800;letter-spacing:.1em;color:#7a745f">ENDS&nbsp;IN</span>
+        <div class="timer"><span id="tH">00</span><i>:</i><span id="tM">00</span><i>:</i><span id="tS">00</span></div></div>
+    </div>
+    <div class="rail-wrap reveal">
+      <button class="rail-btn prev" data-rail="dealsRail" data-dir="-1" aria-label="Scroll left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="rail" id="dealsRail"></div>
+      <button class="rail-btn next" data-rail="dealsRail" data-dir="1" aria-label="Scroll right"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ====== SHOP BY CATEGORY ====== -->
+  <section id="cats">
+    <div class="sec-head reveal"><div><h2>Shop by Category</h2><div class="sub">Every piece, chosen with care.</div></div></div>
+    <div class="cat-grid reveal" id="catGrid"></div>
+  </section>
+
+  <!-- ====== MAIN SHOP GRID ====== -->
+  <section id="shop" style="padding-bottom:10px">
+    <div class="sec-head reveal"><div><h2>The Full Collection</h2><div class="sub">Modest silhouettes, breathable fabrics, honest prices.</div></div></div>
+    <div class="toolbar reveal">
+      <div class="chips" id="chips"></div>
+      <div class="sortwrap">Sort by
+        <select id="sortSelect">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Avg. Customer Review</option>
+        </select>
+      </div>
+    </div>
+    <div class="results-count" id="resultsCount"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- ====== JOURNAL ====== -->
+  <section class="journal" id="journal">
+    <div class="journal-inner reveal">
+      <div class="journal-txt">
+        <div class="kicker">The Modesty Journal</div>
+        <h2>"Dressing with intention is a quiet kind of confidence."</h2>
+        <p>Styling notes, fabric guides, and conversations with women who dress on their own terms. New essays every Friday — read by 120,000+ readers across 40 countries.</p>
+        <button class="btn btn-ghost" onclick="toast('📖 The Journal opens in a new chapter soon')">Read the latest essay →</button>
+      </div>
+      <div class="journal-art"><div class="arch" id="jArch1"></div><div class="arch" id="jArch2"></div></div>
+    </div>
+  </section>
+
+  <!-- ====== NEWSLETTER ====== -->
+  <section class="news">
+    <div class="news-inner reveal">
+      <div><h3>First look, always.</h3><p>Drops, restocks and Eid edits — in your inbox before anyone else.</p></div>
+      <form id="newsForm"><input type="email" required placeholder="your@email.com" aria-label="Email address"><button class="btn" type="submit">Subscribe</button></form>
+    </div>
+  </section>
+</main>
+
+<div class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲ &nbsp;Back to top</div>
+<footer>
+  <div class="f-cols">
+    <div class="brand"><div class="mark">Modesty<em>.</em></div><p>Thoughtful fashion, delivered with care. Founded 2021 · Ships worldwide from our Istanbul &amp; Kuala Lumpur ateliers.</p></div>
+    <div><h5>Shop</h5><a href="#shop">Abayas</a><a href="#shop">Hijabs &amp; Scarves</a><a href="#shop">Dresses</a><a href="#shop">Prayer &amp; Home</a><a href="#deals">Today's Deals</a></div>
+    <div><h5>Help</h5><a href="#">Track your order</a><a href="#">Returns &amp; exchanges</a><a href="#">Size guide</a><a href="#">Fabric care</a><a href="#">Contact us</a></div>
+    <div><h5>Company</h5><a href="#journal">The Journal</a><a href="#">Our story</a><a href="#">Sustainability</a><a href="#">Careers</a><a href="#">Press</a></div>
+  </div>
+  <div class="f-bottom">© 2026 Modesty.com — a demo storefront. No real orders, only real good taste. ✦ Made with care.</div>
+</footer>
+
+<!-- ====== CART DRAWER ====== -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <div class="drawer-head"><h3>Your Cart <span id="drawerCount" style="font-size:.8rem;opacity:.7"></span></h3>
+    <button class="x-btn" id="drawerClose" aria-label="Close cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="ship-bar" id="shipBar"></div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="sub-row"><span>Subtotal</span><b id="subtotal">$0.00</b></div>
+    <button class="btn checkout" id="checkoutBtn">Proceed to Checkout →</button>
+  </div>
+</aside>
+
+<!-- ====== QUICK VIEW ====== -->
+<div class="modal" id="modal"><div class="modal-box" id="modalBox">
+  <button class="x-btn" id="modalClose" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="modal-art" id="mArt"></div>
+  <div class="modal-info">
+    <div class="cat" id="mCat"></div><h3 id="mName"></h3>
+    <div class="rate-line" id="mRate"></div>
+    <div class="modal-price" id="mPrice"></div>
+    <p class="desc" id="mDesc"></p>
+    <div id="mSizeWrap"><span class="lbl">Size</span><div class="sizes" id="mSizes"></div></div>
+    <div class="modal-cta">
+      <div class="qty" style="margin:0"><button id="mMinus">−</button><b id="mQty">1</b><button id="mPlus">+</button></div>
+      <button class="btn" id="mAdd">Add to Cart</button>
+    </div>
+  </div>
+</div></div>
+
+<div id="toasts"></div>
+
+<script>
+/* ================= DATA ================= */
+const PRODUCTS = [
+ {id:1, name:"Aaliyah Open Abaya — Midnight Moss", cat:"Abayas", price:68, old:92, rating:4.8, reviews:2431, badge:"Best Seller", art:"abaya", fill:"#33584a", bg:["#e9ead9","#d7dcc3"], sizes:["XS","S","M","L","XL"], desc:"A fluid open-front abaya in crinkle crepe with concealed pockets and a detachable belt. Falls gracefully to the ankle."},
+ {id:2, name:"Medina Premium Jersey Hijab — 3 Pack", cat:"Hijabs & Scarves", price:24, old:32, rating:4.9, reviews:5120, badge:"Modesty's Choice", art:"hijab", fill:"#5d4157", bg:["#f3e4ea","#e6cdd8"], sizes:["One size"], desc:"Buttery-soft premium jersey that drapes without pins. Three everyday neutrals in one pack."},
+ {id:3, name:"Safiya Linen Maxi Dress — Clay Rose", cat:"Dresses", price:79, old:99, rating:4.7, reviews:1310, badge:"New", art:"dress", fill:"#a14e2a", bg:["#f6e3d6","#ecd0bc"], sizes:["XS","S","M","L","XL"], desc:"Breathable European flax linen with a smocked back, full skirt and side pockets. Machine washable."},
+ {id:4, name:"Noor Chiffon Shayla — Sea Glass", cat:"Hijabs & Scarves", price:18, old:null, rating:4.6, reviews:890, badge:null, art:"hijab", fill:"#6f8f86", bg:["#e2ece8","#cbdcd6"], sizes:["One size"], desc:"Featherlight chiffon shayla with hand-rolled edges. 180cm of effortless drape."},
+ {id:5, name:"Zaynab Everyday Tunic — Oat", cat:"Tunics", price:42, old:56, rating:4.5, reviews:764, badge:"Deal", art:"tunic", fill:"#b08544", bg:["#f4ecd8","#e8dcc0"], sizes:["S","M","L","XL"], desc:"The tunic you'll reach for daily — mid-calf length, side slits, and a collar that layers beautifully."},
+ {id:6, name:"Alhambra Velvet Prayer Mat — Emerald", cat:"Prayer & Home", price:39, old:52, rating:4.9, reviews:3208, badge:"Best Seller", art:"mat", fill:"#1e4d3b", bg:["#e9ead9","#d3dcc9"], sizes:["One size"], desc:"Plush 12mm velvet with an embroidered mihrab arch and gold tassels. Gift box included."},
+ {id:7, name:"Layla Structured Tote — Chestnut", cat:"Accessories", price:58, old:74, rating:4.4, reviews:412, badge:null, art:"tote", fill:"#7a4a2b", bg:["#f3e4d8","#e5cfbc"], sizes:["One size"], desc:"Vegetable-tanned leather tote with a magnetic closure and padded 13\u2033 laptop sleeve."},
+ {id:8, name:"Hana Pleated Abaya — Slate Blue", cat:"Abayas", price:74, old:null, rating:4.6, reviews:987, badge:"New", art:"abaya", fill:"#46586e", bg:["#e3e8ec","#ccd6de"], sizes:["XS","S","M","L","XL"], desc:"Micro-pleated sleeves and a relaxed A-line cut in matte nida fabric. Includes matching shayla."},
+ {id:9, name:"Rayyan Gift Set — Kufi & Mat", cat:"Prayer & Home", price:29, old:39, rating:4.7, reviews:655, badge:"Deal", art:"set", fill:"#33584a", bg:["#f4ecd8","#e6dabb"], sizes:["One size"], desc:"A woven kufi and travel prayer mat, wrapped in linen ribbon. The perfect hadiya."},
+ {id:10,name:"Amira Modal Underscarves — 4 Pack", cat:"Hijabs & Scarves", price:16, old:null, rating:4.8, reviews:2109, badge:"Modesty's Choice", art:"hijab", fill:"#3c423e", bg:["#eaeae2","#d8d8cc"], sizes:["One size"], desc:"Seamless modal bonnets that keep every scarf in place — all day, zero slipping."},
+ {id:11,name:"Farah Kaftan Dress — Saffron", cat:"Dresses", price:88, old:112, rating:4.8, reviews:1502, badge:"Limited", art:"dress", fill:"#c8963e", bg:["#f6ead0","#ecd9ae"], sizes:["S","M","L"], desc:"A statement kaftan in saffron-dyed crepe with gold-thread cuffs. Cut generously, drapes like light."},
+ {id:12,name:"Yasmin Batwing Tunic — Ivory", cat:"Tunics", price:46, old:null, rating:4.3, reviews:388, badge:null, art:"tunic", fill:"#b7a98c", bg:["#f5f0e2","#e9e1cb"], sizes:["S","M","L","XL"], desc:"Dramatic batwing sleeves in an opaque ivory twill. Pairs with everything you own."},
+ {id:13,name:"Cordoba Lantern Candle — Oud & Amber", cat:"Prayer & Home", price:22, old:28, rating:4.5, reviews:276, badge:null, art:"candle", fill:"#c8963e", bg:["#f0e6d2","#e2d2b2"], sizes:["One size"], desc:"Hand-poured soy candle in a reusable geometric lantern vessel. 45-hour burn."},
+ {id:14,name:"Dua Everyday Abaya — Charcoal", cat:"Abayas", price:54, old:68, rating:4.6, reviews:1750, badge:"Deal", art:"abaya", fill:"#3c423e", bg:["#e8e6df","#d6d3c8"], sizes:["XS","S","M","L","XL","XXL"], desc:"Our best-selling daily abaya — wrinkle-resistant, snap-cuff sleeves, deep pockets."},
+ {id:15,name:"Selin Silk-Blend Scarf — Pearl", cat:"Hijabs & Scarves", price:32, old:null, rating:4.7, reviews:934, badge:"New", art:"hijab", fill:"#c9b8a8", bg:["#f5efe6","#e9dfcf"], sizes:["One size"], desc:"A silk-blend square with a soft lustre — for days that call for something finer."},
+ {id:16,name:"Marwa Weekend Tote — Olive", cat:"Accessories", price:64, old:80, rating:4.6, reviews:523, badge:null, art:"tote", fill:"#55624a", bg:["#e9ead9","#d5dbbf"], sizes:["One size"], desc:"Water-resistant canvas with leather trim, trolley sleeve and a detachable pouch."}
+];
+const SLIDES = [
+ {k:"The Eid Edit '26", t:"Grace, in <em>every</em> layer.", s:"New-season abayas and kaftans in breathable crinkle crepe — designed to move the way you do.", cta:"Shop the Eid Edit", cat:"Abayas", art:"abaya", fill:"#33584a", bg:["#dfe3cd","#c9d2b4"]},
+ {k:"Hijab Studio", t:"Jersey that <em>stays</em> put.", s:"Pin-free drape, buttery weight, twelve colours. The scarves our community reorders again and again.", cta:"Shop Hijabs", cat:"Hijabs & Scarves", art:"hijab", fill:"#5d4157", bg:["#ecd6de","#dcbecb"]},
+ {k:"Prayer & Home", t:"Softness for <em>sujood</em>.", s:"Velvet mats, lantern light and oud on the breeze — make every corner of home a quiet one.", cta:"Shop Prayer & Home", cat:"Prayer & Home", art:"mat", fill:"#1e4d3b", bg:["#e6e8d6","#d0d8bd"]}
+];
+const FREE_SHIP = 50;
+const BADGE_CLASS = {"Best Seller":"best","Modesty's Choice":"choice","New":"new","Deal":"deal","Limited":"ltd"};
+
+/* ================= SVG ART ================= */
+const SHAPES = {
+ hanger:'<path d="M100 46 v-7 a8 8 0 1 1 8 -9" stroke="#8f8871" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M66 52 H134" stroke="#8f8871" stroke-width="3" stroke-linecap="round"/>',
+ abaya:'<path d="M100 46 L78 55 C66 60 62 72 58 94 L47 162 Q100 178 153 162 L142 94 C138 72 134 60 122 55 Z" fill="FILL"/><path d="M91 49 C91 59 109 59 109 49 L103 46 L97 46 Z" fill="rgba(20,26,20,.3)"/><path d="M88 72 C84 108 82 132 80 156 M112 72 C116 108 118 132 120 156 M100 64 V162" stroke="rgba(20,26,20,.15)" stroke-width="2" fill="none" stroke-linecap="round"/>',
+ hijab:'<path d="M100 36 C74 36 58 58 58 86 C58 110 66 126 60 156 L86 146 C94 120 90 106 92 90 Z" fill="FILL" opacity=".8"/><path d="M100 36 C126 36 142 58 142 86 C142 110 134 126 140 156 L114 146 C106 120 110 106 108 90 Z" fill="FILL" opacity=".8"/><path d="M100 36 C76 36 60 58 60 84 C60 104 76 116 100 116 C124 116 140 104 140 84 C140 58 124 36 100 36 Z" fill="FILL"/><path d="M70 78 C80 96 120 96 130 78" stroke="rgba(255,255,255,.4)" stroke-width="3" fill="none" stroke-linecap="round"/>',
+ dress:'<path d="M84 48 L116 48 L112 84 C112 88 88 88 88 84 Z" fill="FILL"/><path d="M88 88 L112 88 L140 164 Q100 176 60 164 Z" fill="FILL"/><path d="M84 48 C72 54 66 66 68 82 M116 48 C128 54 134 66 132 82" stroke="FILL" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M84 112 Q100 118 116 112 M76 138 Q100 146 124 138" stroke="rgba(20,26,20,.15)" stroke-width="2" fill="none" stroke-linecap="round"/>',
+ tunic:'<path d="M78 50 L122 50 L128 158 L72 158 Z" fill="FILL"/><path d="M78 50 C64 58 58 72 56 90 L66 94 C70 78 74 66 80 60 Z" fill="FILL" opacity=".85"/><path d="M122 50 C136 58 142 72 144 90 L134 94 C130 78 126 66 120 60 Z" fill="FILL" opacity=".85"/><path d="M93 50 Q100 60 107 50" stroke="rgba(20,26,20,.3)" stroke-width="3" fill="none"/><path d="M72 146 h9 M119 146 h9" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round"/>',
+ mat:'<rect x="56" y="44" width="88" height="118" rx="9" fill="FILL"/><rect x="63" y="51" width="74" height="104" rx="6" fill="none" stroke="rgba(226,163,60,.75)" stroke-width="2.5"/><path d="M76 142 V102 C76 86 88 76 100 70 C112 76 124 86 124 102 V142 Z" fill="rgba(226,163,60,.3)"/><circle cx="100" cy="112" r="5" fill="rgba(226,163,60,.85)"/><circle cx="60" cy="168" r="3" fill="#c8963e"/><circle cx="100" cy="170" r="3" fill="#c8963e"/><circle cx="140" cy="168" r="3" fill="#c8963e"/>',
+ tote:'<path d="M78 74 C78 50 122 50 122 74" stroke="FILL" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M62 78 H138 L131 160 C130 166 125 170 119 170 H81 C75 170 70 166 69 160 Z" fill="FILL"/><path d="M62 92 H138" stroke="rgba(255,255,255,.35)" stroke-width="3"/><circle cx="100" cy="122" r="7" fill="rgba(226,163,60,.85)"/>',
+ set:'<rect x="56" y="130" width="88" height="22" rx="9" fill="FILL"/><rect x="60" y="106" width="80" height="22" rx="9" fill="FILL" opacity=".82"/><rect x="66" y="82" width="68" height="22" rx="9" fill="FILL" opacity=".62"/><path d="M88 66 Q100 50 112 66" stroke="#c8963e" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="100" cy="58" r="4" fill="#c8963e"/>',
+ candle:'<rect x="74" y="88" width="52" height="72" rx="9" fill="#efe3c8"/><rect x="74" y="88" width="52" height="72" rx="9" fill="none" stroke="rgba(20,26,20,.18)" stroke-width="2"/><path d="M74 112 h52 M74 136 h52" stroke="rgba(20,26,20,.1)" stroke-width="2"/><path d="M100 58 C107 68 111 74 111 80 a11 11 0 0 1 -22 0 c0 -6 4 -12 11 -22 Z" fill="#e2a33c"/><path d="M100 70 c3 5 5 8 5 11 a5 5 0 0 1 -10 0 c0 -3 2 -6 5 -11 Z" fill="#b4552d"/><path d="M100 88 v4" stroke="rgba(20,26,20,.4)" stroke-width="2"/>'
+};
+function artSVG(key, bgA, bgB, fill){
+  return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <rect width="200" height="200" fill="${bgA}"/>
+    <path d="M28 200 V92 A72 72 0 0 1 172 92 V200 Z" fill="${bgB}"/>
+    <circle cx="100" cy="84" r="54" fill="#f6f1e2" opacity=".5"/>
+    ${SHAPES[key].split('FILL').join(fill)}
+  </svg>`;
+}
+
+/* ================= HELPERS ================= */
+const $ = s => document.querySelector(s);
+const money = n => n % 1 ? n.toFixed(2) : n + "";
+function priceHTML(p, big){
+  const [i, c] = money(p).split(".");
+  return `<span class="price">${big?"":"$"}${i}${c?`<sup>.${c}</sup>`:""}</span>`;
+}
+const starsHTML = r => `<span class="stars" aria-hidden="true">★★★★★<span class="fill" style="width:${r/5*100}%">★★★★★</span></span>`;
+function toast(msg){
+  const t = document.createElement("div"); t.className = "toast"; t.innerHTML = msg;
+  $("#toasts").appendChild(t);
+  setTimeout(()=>{ t.classList.add("out"); setTimeout(()=>t.remove(), 320); }, 2800);
+}
+
+/* ================= STATE ================= */
+const state = { cat:"all", q:"", sort:"featured" };
+const cart = new Map();   // id -> qty
+const wish = new Set();
+
+/* ================= RENDER: GRID ================= */
+function filtered(){
+  let list = PRODUCTS.filter(p =>
+    (state.cat === "all" || p.cat === state.cat) &&
+    (p.name.toLowerCase().includes(state.q) || p.cat.toLowerCase().includes(state.q) || p.desc.toLowerCase().includes(state.q))
+  );
+  if(state.sort === "price-asc")  list = [...list].sort((a,b)=>a.price-b.price);
+  if(state.sort === "price-desc") list = [...list].sort((a,b)=>b.price-a.price);
+  if(state.sort === "rating")     list = [...list].sort((a,b)=>b.rating-a.rating);
+  return list;
+}
+function cardHTML(p, i){
+  const disc = p.old ? Math.round((1 - p.price/p.old)*100) : 0;
+  return `<article class="card" style="animation-delay:${Math.min(i*45,400)}ms">
+    <div class="card-art" onclick="openModal(${p.id})">
+      ${p.badge?`<span class="badge ${BADGE_CLASS[p.badge]}">${p.badge}</span>`:""}
+      <button class="heart ${wish.has(p.id)?"on":""}" onclick="toggleWish(event,${p.id})" aria-label="Save to wishlist">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="${wish.has(p.id)?"currentColor":"none"}" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.7-9.7-9.2C.7 8.4 2.6 4.5 6.2 4.5c2 0 3.6 1.1 4.4 2.7l1.4.1c.8-1.7 2.4-2.8 4.4-2.8 3.6 0 5.5 3.9 3.9 7.3C19.5 16.3 12 21 12 21Z"/></svg>
+      </button>${artSVG(p.art, p.bg[0], p.bg[1], p.fill)}
+    </div>
+    <div class="card-body">
+      <span class="cat">${p.cat}</span>
+      <h3 onclick="openModal(${p.id})">${p.name}</h3>
+      <div class="rate-line">${starsHTML(p.rating)}<small>${p.rating} · ${p.reviews.toLocaleString()}</small></div>
+      <div class="price-line">${priceHTML(p.price)}${p.old?`<span class="old">$${p.old}</span><span class="save">Save ${disc}%</span>`:""}</div>
+      <button class="add-btn" onclick="addToCart(${p.id},1,this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="9" cy="20" r="1.6"/><circle cx="17.5" cy="20" r="1.6"/><path d="M2.5 3.5h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.2L21.5 7H6.3"/></svg>
+        Add to Cart</button>
+    </div></article>`;
+}
+function renderGrid(skeleton=false){
+  const grid = $("#grid");
+  const list = filtered();
+  $("#resultsCount").innerHTML = `Showing <b>${list.length}</b> product${list.length!==1?"s":""}${state.q?` for “<b>${state.q}</b>”`:""}${state.cat!=="all"?` in <b>${state.cat}</b>`:""}`;
+  if(skeleton){
+    grid.innerHTML = Array(8).fill(`<div class="skel"><div class="a"></div><div class="l"></div><div class="l short"></div></div>`).join("");
+    setTimeout(()=>paintGrid(list), 620);
+  } else paintGrid(list);
+}
+function paintGrid(list){
+  $("#grid").innerHTML = list.length
+    ? list.map(cardHTML).join("")
+    : `<div class="empty"><svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#c9c0a4" stroke-width="1.6" style="margin:0 auto"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+       <div class="display">Nothing matches that search</div><p>Try another word, or browse the whole collection.</p>
+       <button class="btn" onclick="resetFilters()">Clear filters</button></div>`;
+}
+function resetFilters(){
+  state.cat="all"; state.q=""; state.sort="featured";
+  $("#searchInput").value=""; $("#catSelect").value="all"; $("#sortSelect").value="featured";
+  syncChips(); renderGrid();
+}
+
+/* ================= CHIPS ================= */
+const CHIP_LABELS = {all:"All", "Abayas":"Abayas", "Hijabs & Scarves":"Hijabs", "Dresses":"Dresses", "Tunics":"Tunics", "Prayer & Home":"Prayer & Home", "Accessories":"Accessories"};
+$("#chips").innerHTML = Object.keys(CHIP_LABELS).map(k =>
+  `<button class="chip ${k==="all"?"on":""}" data-cat="${k}">${CHIP_LABELS[k]}</button>`).join("");
+function syncChips(){ document.querySelectorAll("#chips .chip").forEach(c => c.classList.toggle("on", c.dataset.cat === state.cat)); }
+$("#chips").addEventListener("click", e => {
+  const c = e.target.closest(".chip"); if(!c) return;
+  state.cat = c.dataset.cat; $("#catSelect").value = state.cat === "all" ? "all" : state.cat;
+  syncChips(); renderGrid();
+});
+
+/* ================= SEARCH & SORT ================= */
+$("#searchInput").addEventListener("input", e => { state.q = e.target.value.trim().toLowerCase(); renderGrid(); });
+$("#searchInput").addEventListener("keydown", e => { if(e.key === "Enter") $("#shop").scrollIntoView({behavior:"smooth"}); });
+$("#searchGo").addEventListener("click", () => $("#shop").scrollIntoView({behavior:"smooth"}));
+$("#catSelect").addEventListener("change", e => { state.cat = e.target.value; syncChips(); renderGrid(); $("#shop").scrollIntoView({behavior:"smooth"}); });
+$("#sortSelect").addEventListener("change", e => { state.sort = e.target.value; renderGrid(); });
+
+/* ================= SUB NAV ================= */
+$("#subNav").addEventListener("click", e => {
+  const b = e.target.closest(".sublink"); if(!b) return;
+  if(b.dataset.all){ resetFilters(); $("#shop").scrollIntoView({behavior:"smooth"}); return; }
+  if(b.dataset.scroll){ $(b.dataset.scroll).scrollIntoView({behavior:"smooth"}); return; }
+  if(b.dataset.toast){ toast(b.dataset.toast); return; }
+  if(b.dataset.cat){ state.cat = b.dataset.cat; $("#catSelect").value = state.cat; syncChips(); renderGrid(); $("#shop").scrollIntoView({behavior:"smooth"}); }
+});
+
+/* ================= CAROUSEL ================= */
+$("#slides").innerHTML = SLIDES.map((s,i)=>`
+  <div class="slide ${i===0?"active":""}"><div class="slide-inner">
+    <div><div class="kicker">${s.k}</div><h1>${s.t}</h1><p>${s.s}</p>
+      <div class="slide-cta"><button class="btn" data-cat="${s.cat}">${s.cta} →</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Browse all</button></div></div>
+    <div class="slide-art">${artSVG(s.art, s.bg[0], s.bg[1], s.fill)}</div>
+  </div></div>`).join("");
+$("#carDots").innerHTML = SLIDES.map((_,i)=>`<button data-i="${i}" class="${i===0?"on":""}" aria-label="Slide ${i+1}"></button>`).join("");
+let carIdx = 0, carTimer;
+function goSlide(i){
+  carIdx = (i + SLIDES.length) % SLIDES.length;
+  document.querySelectorAll(".slide").forEach((s,j)=>s.classList.toggle("active", j===carIdx));
+  document.querySelectorAll("#carDots button").forEach((d,j)=>d.classList.toggle("on", j===carIdx));
+}
+function carAuto(){ clearInterval(carTimer); carTimer = setInterval(()=>goSlide(carIdx+1), 5600); }
+$("#carPrev").onclick = ()=>{ goSlide(carIdx-1); carAuto(); };
+$("#carNext").onclick = ()=>{ goSlide(carIdx+1); carAuto(); };
+$("#carDots").onclick = e => { const d = e.target.closest("button"); if(d){ goSlide(+d.dataset.i); carAuto(); } };
+$("#hero").addEventListener("mouseenter", ()=>clearInterval(carTimer));
+$("#hero").addEventListener("mouseleave", carAuto);
+document.querySelectorAll(".slide .btn[data-cat]").forEach(b => b.onclick = () => {
+  state.cat = b.dataset.cat; $("#catSelect").value = state.cat; syncChips(); renderGrid();
+  $("#shop").scrollIntoView({behavior:"smooth"});
+});
+carAuto();
+
+/* ================= SHELF ================= */
+const SHELF = [["Abayas","Shop robes","#33584a","abaya"],["Hijabs & Scarves","Shop scarves","#5d4157","hijab"],["Dresses","Shop maxis","#a14e2a","dress"],["Prayer & Home","Shop serenity","#1e4d3b","mat"],["Accessories","Shop totes","#7a4a2b","tote"]];
+$("#shelfRow").innerHTML = SHELF.map(([cat,label,fill,art])=>`
+  <div class="shelf-card" data-cat="${cat}"><div class="thumb">${artSVG(art,"#efe8d6","#e2d8c0",fill)}</div>
+  <div><b>${label}</b><small>${cat}</small></div></div>`).join("");
+$("#shelfRow").addEventListener("click", e => {
+  const c = e.target.closest(".shelf-card"); if(!c) return;
+  state.cat = c.dataset.cat; $("#catSelect").value = state.cat; syncChips(); renderGrid();
+  $("#shop").scrollIntoView({behavior:"smooth"});
+});
+
+/* ================= DEALS RAIL ================= */
+const deals = PRODUCTS.filter(p=>p.old).sort((a,b)=>(1-b.price/b.old)-(1-a.price/a.old));
+$("#dealsRail").innerHTML = deals.map(p=>{
+  const disc = Math.round((1-p.price/p.old)*100), claimed = 40 + (p.id*17)%55;
+  return `<div class="deal-card" onclick="openModal(${p.id})">
+    <div class="deal-art">${artSVG(p.art,p.bg[0],p.bg[1],p.fill)}</div>
+    <span class="deal-off">−${disc}%</span>
+    <div class="deal-body"><h4>${p.name}</h4>
+      <div class="price-line">${priceHTML(p.price)}<span class="old">$${p.old}</span></div>
+      <div class="claim"><i style="width:${claimed}%"></i></div>
+      <div class="claim-txt">${claimed}% claimed · ⚡ Lightning Deal</div>
+    </div></div>`;
+}).join("");
+document.querySelectorAll(".rail-btn").forEach(b => b.onclick = ()=> $(`#${b.dataset.rail}`).scrollBy({left:250*+b.dataset.dir, behavior:"smooth"}));
+
+/* countdown to midnight */
+function tick(){
+  const now = new Date(), end = new Date(now); end.setHours(24,0,0,0);
+  let s = Math.max(0, Math.floor((end-now)/1000));
+  const pad = n => String(n).padStart(2,"0");
+  $("#tH").textContent = pad(Math.floor(s/3600)); $("#tM").textContent = pad(Math.floor(s/60)%60); $("#tS").textContent = pad(s%60);
+}
+tick(); setInterval(tick, 1000);
+
+/* ================= CATEGORY TILES ================= */
+const CAT_TILES = [["Abayas","#33584a","abaya","Flowing, layered, free"],["Hijabs & Scarves","#5d4157","hijab","Drape without pins"],["Dresses","#a14e2a","dress","Maxis for every day"],["Tunics","#b08544","tunic","The everyday layer"],["Prayer & Home","#1e4d3b","mat","Quiet corners"],["Accessories","#7a4a2b","tote","Finishing touches"]];
+$("#catGrid").innerHTML = CAT_TILES.map(([c,fill,art,tag])=>`
+  <div class="cat-tile" data-cat="${c}"><div class="art">${artSVG(art,"#f0e9d7","#e4dbc2",fill)}</div>
+  <div class="lbl"><small>${tag}</small><b>${c} →</b></div></div>`).join("");
+$("#catGrid").addEventListener("click", e => {
+  const t = e.target.closest(".cat-tile"); if(!t) return;
+  state.cat = t.dataset.cat; $("#catSelect").value = state.cat; syncChips(); renderGrid();
+  $("#shop").scrollIntoView({behavior:"smooth"});
+});
+
+/* journal art */
+$("#jArch1").innerHTML = artSVG("abaya","#dfe3cd","#c9d2b4","#33584a");
+$("#jArch2").innerHTML = artSVG("hijab","#ecd6de","#dcbecb","#5d4157");
+
+/* ================= CART ================= */
+function addToCart(id, qty=1, fromEl=null){
+  cart.set(id, (cart.get(id)||0) + qty);
+  updateCartUI();
+  if(fromEl){ flyToCart(fromEl); const b = fromEl.closest(".add-btn");
+    if(b){ b.classList.add("added"); const h = b.innerHTML; b.innerHTML = "✓ Added"; setTimeout(()=>{ b.classList.remove("added"); b.innerHTML = h; }, 1300); }
+  }
+  const p = PRODUCTS.find(x=>x.id===id);
+  toast(`🛍 <span><b>${p.name.split("—")[0].trim()}</b> added to cart</span>`);
+}
+function flyToCart(fromEl){
+  const a = fromEl.getBoundingClientRect(), b = $("#cartBtn").getBoundingClientRect();
+  const fly = document.createElement("div"); fly.className = "fly";
+  fly.style.left = a.left + a.width/2 + "px"; fly.style.top = a.top + "px";
+  document.body.appendChild(fly);
+  requestAnimationFrame(()=>{ fly.style.transform = `translate(${b.left-a.left-a.width/2+18}px, ${b.top-a.top+14}px) scale(.25)`; fly.style.opacity = "0"; });
+  setTimeout(()=>fly.remove(), 750);
+}
+function updateCartUI(){
+  const n = [...cart.values()].reduce((a,b)=>a+b,0);
+  const pip = $("#cartCount"); pip.textContent = n; pip.classList.toggle("on", n>0);
+  pip.classList.remove("bounce"); void pip.offsetWidth; pip.classList.add("bounce");
+  const sub = [...cart.entries()].reduce((s,[id,q]) => s + PRODUCTS.find(p=>p.id===id).price*q, 0);
+  $("#subtotal").textContent = "$" + sub.toFixed(2);
+  $("#drawerCount").textContent = n ? `(${n} item${n>1?"s":""})` : "";
+  const left = Math.max(0, FREE_SHIP - sub);
+  $("#shipBar").innerHTML = left > 0
+    ? `Add <b style="color:var(--pine)">$${left.toFixed(2)}</b> more for <b>FREE shipping</b><div class="track"><div class="fill" style="width:${Math.min(100,sub/FREE_SHIP*100)}%"></div></div>`
+    : `🎉 You've unlocked <b>FREE shipping</b>!<div class="track"><div class="fill" style="width:100%"></div></div>`;
+  $("#drawerItems").innerHTML = cart.size ? [...cart.entries()].map(([id,q])=>{
+    const p = PRODUCTS.find(x=>x.id===id);
+    return `<div class="ci"><div class="thumb">${artSVG(p.art,p.bg[0],p.bg[1],p.fill)}</div>
+      <div><h5>${p.name}</h5><div class="p">$${(p.price*q).toFixed(2)}</div>
+        <div class="qty"><button onclick="chQty(${id},-1)">−</button><b>${q}</b><button onclick="chQty(${id},1)">+</button></div></div>
+      <button class="rm" onclick="removeItem(${id})">✕ remove</button></div>`;
+  }).join("") : `<div class="cart-empty"><div style="font-size:2.4rem">🧺</div><div class="display">Your cart is empty</div><p>Beautiful things await.</p><button class="btn" onclick="closeDrawer();document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Start shopping</button></div>`;
+}
+function chQty(id,d){ const q = (cart.get(id)||0)+d; q<=0 ? cart.delete(id) : cart.set(id,q); updateCartUI(); }
+function removeItem(id){ cart.delete(id); updateCartUI(); }
+$("#cartBtn").onclick = ()=>{ $("#drawer").classList.add("open"); $("#overlay").classList.add("open"); document.body.style.overflow="hidden"; };
+function closeDrawer(){ $("#drawer").classList.remove("open"); if(!$("#modal").classList.contains("open")){$("#overlay").classList.remove("open"); document.body.style.overflow="";} }
+$("#drawerClose").onclick = closeDrawer;
+$("#checkoutBtn").onclick = ()=> toast(cart.size ? "💳 Demo checkout — but excellent choices!" : "🧺 Add something lovely first");
+
+/* ================= WISHLIST ================= */
+function toggleWish(e, id){
+  e.stopPropagation();
+  wish.has(id) ? wish.delete(id) : wish.add(id);
+  const w = $("#wishCount"); w.textContent = wish.size; w.classList.toggle("on", wish.size>0);
+  w.classList.remove("bounce"); void w.offsetWidth; w.classList.add("bounce");
+  renderGrid();
+}
+$("#wishBtn").onclick = ()=> toast(wish.size ? `💚 ${wish.size} item${wish.size>1?"s":""} saved to your wishlist` : "Tap the ♡ on any product to save it");
+
+/* ================= QUICK VIEW ================= */
+let mProduct = null, mSize = null, mQty = 1;
+function openModal(id){
+  mProduct = PRODUCTS.find(p=>p.id===id); mQty = 1;
+  mSize = mProduct.sizes.length === 1 ? mProduct.sizes[0] : null;
+  $("#mArt").innerHTML = artSVG(mProduct.art, mProduct.bg[0], mProduct.bg[1], mProduct.fill);
+  $("#mCat").textContent = mProduct.cat;
+  $("#mName").textContent = mProduct.name;
+  $("#mRate").innerHTML = `${starsHTML(mProduct.rating)}<small>${mProduct.rating} out of 5 · ${mProduct.reviews.toLocaleString()} ratings</small>`;
+  $("#mPrice").innerHTML = `${priceHTML(mProduct.price,true)}${mProduct.old?`<span class="old" style="font-size:1rem">$${mProduct.old}</span><span class="save">Save ${Math.round((1-mProduct.price/mProduct.old)*100)}%</span>`:""}`;
+  $("#mDesc").textContent = mProduct.desc;
+  $("#mQty").textContent = mQty;
+  $("#mSizeWrap").style.display = mProduct.sizes.length > 1 ? "block" : "none";
+  $("#mSizes").innerHTML = mProduct.sizes.map(s=>`<button class="size ${s===mSize?"on":""}" data-s="${s}">${s}</button>`).join("");
+  $("#modal").classList.add("open"); $("#overlay").classList.add("open"); document.body.style.overflow="hidden";
+}
+$("#mSizes").addEventListener("click", e=>{ const b=e.target.closest(".size"); if(!b) return; mSize=b.dataset.s;
+  document.querySelectorAll("#mSizes .size").forEach(x=>x.classList.toggle("on",x===b)); });
+$("#mMinus").onclick = ()=>{ mQty = Math.max(1, mQty-1); $("#mQty").textContent = mQty; };
+$("#mPlus").onclick  = ()=>{ mQty = Math.min(9, mQty+1); $("#mQty").textContent = mQty; };
+$("#mAdd").onclick = ()=>{ if(!mSize){ toast("📏 Please choose a size first"); return; }
+  addToCart(mProduct.id, mQty, $("#mAdd")); closeModal(); };
+function closeModal(){ $("#modal").classList.remove("open"); if(!$("#drawer").classList.contains("open")){$("#overlay").classList.remove("open"); document.body.style.overflow="";} }
+$("#modalClose").onclick = closeModal;
+$("#overlay").onclick = ()=>{ closeDrawer(); closeModal(); };
+document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closeDrawer(); closeModal(); } });
+
+/* ================= NEWSLETTER ================= */
+$("#newsForm").addEventListener("submit", e=>{ e.preventDefault(); toast("🌙 Marhaba! Check your inbox for a welcome gift."); e.target.reset(); });
+
+/* ================= MARQUEE & REVEAL ================= */
+$("#marquee").innerHTML += $("#marquee").innerHTML; // seamless loop
+const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }), {threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* ================= INIT ================= */
+renderGrid(true);
+updateCartUI();
+</script>
+</body>
+</html>
